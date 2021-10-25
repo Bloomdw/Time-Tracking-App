@@ -1,0 +1,286 @@
+{
+ "apps": [
+  {
+   "hours": 0.0,
+   "minutes": 3.0,
+   "name": "pycharm64.exe",
+   "seconds": 228.68261814117432,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "EpicGamesLauncher.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "EpicOnlineServicesUserHelper.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "Spotify.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "Lightshot.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "AcroRd32.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0.0,
+   "minutes": 0.0,
+   "name": "brave.exe",
+   "seconds": 3.6940627098083496,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "GyStation.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "msedge.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "lghub.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "ONENOTEM.EXE",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "flux.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0.0,
+   "minutes": 1.0,
+   "name": "Discord.exe",
+   "seconds": 73.03358793258667,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "Evernote.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "SecurityHealthSystray.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "steam.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "notepad++.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "RiotClientServices.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "MATLAB.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "SndVol.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  }
+ ],
+ "sites": [
+  {
+   "hours": 0,
+   "minutes": 25,
+   "name": "undefined",
+   "seconds": 1559,
+   "url": "chrome://favicon/",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "",
+   "seconds": 0,
+   "url": "chrome://favicon/chrome://newtab/",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "chrome:",
+   "seconds": 20,
+   "url": "chrome://favicon/chrome://newtab/",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 1,
+   "name": "www.youtube.com",
+   "seconds": 89,
+   "url": "chrome://favicon/https://www.youtube.com/",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 1,
+   "name": "www.google.com",
+   "seconds": 103,
+   "url": "chrome://favicon/https://www.google.com/search?q=KeyError%3A+%3CPIL.ImageTk.PhotoImage+object+at+0x000001AE00010040%3E&oq=KeyError%3A+%3CPIL.ImageTk.PhotoImage+object+at+0x000001AE00010040%3E&aqs=chrome..69i57j69i58.138j0j1&sourceid=chrome&ie=UTF-8",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 2,
+   "name": "developer.chrome.com",
+   "seconds": 178,
+   "url": "undefined",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "stackoverflow.com",
+   "seconds": 24,
+   "url": "chrome://favicon/https://stackoverflow.com/questions/59516051/using-pil-imagetk-photoimage-results-in-error-photoimage-object-has-no-attrib",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "osu.ppy.sh",
+   "seconds": 0,
+   "url": "",
+   "week": 0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "www.oreilly.com",
+   "seconds": 0,
+   "url": "",
+   "week": 0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "cdn.discordapp.com",
+   "seconds": 0,
+   "url": "",
+   "week": 0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "www.seoptimer.com",
+   "seconds": 2,
+   "url": "undefined",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "chrome-extension:",
+   "seconds": 0,
+   "url": "",
+   "week": 0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "chrome.google.com",
+   "seconds": 0,
+   "url": "",
+   "week": 0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "www.google.comyo",
+   "seconds": 0,
+   "url": "",
+   "week": 0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "pypi.org",
+   "seconds": 0,
+   "url": "",
+   "week": 0
+  }
+ ]
+}
