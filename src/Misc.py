@@ -18,7 +18,7 @@ def search_vals(name, Type):
     nums = []
 
     try:
-        with open("info.json", 'r') as d:
+        with open("../assets/info.json", 'r') as d:
             j_obj = json.load(d)
 
             if Type not in j_obj:
@@ -103,12 +103,12 @@ def get_icon(exe):
 
     # hbmp.SaveBitmapFile(hdc, 'icon.bmp')
 
-    img = Image.open("icon.png")
+    img = Image.open("../assets/icon.png")
 
     return img
 
 def page_icon(data):
-    defic = Image.open("deficon.png")
+    defic = Image.open("../assets/deficon.png")
     url = data
     if data == '' or not data or data is None:
         return defic
@@ -143,7 +143,7 @@ def get_list(Type):
     list = []
 
     try:
-        with open("info.json", 'r') as d:
+        with open("../assets/info.json", 'r') as d:
             j_obj = json.load(d)
 
             if Type not in j_obj:

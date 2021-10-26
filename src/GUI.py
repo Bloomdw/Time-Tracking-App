@@ -182,7 +182,6 @@ class GUI_class:
         self.a_process_list.append(name)
         process = self.create_process(name, pid, exe)
         self.process_list.append(process)
-
         return 1
 
     def create_process(self, info, pid, exe):

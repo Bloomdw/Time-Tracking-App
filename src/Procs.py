@@ -50,12 +50,12 @@ class Processes(object):
         json_info = {}
 
         try:
-            with open("info.json", 'r') as f:
+            with open("../assets/info.json", 'r') as f:
                 info = json.load(f)
                 json_info = info
                 json_info = search_entry(info, "apps", self.name, self.time_active, "")
 
-            with open("info.json", 'w') as f:
+            with open("../assets/info.json", 'w') as f:
                 json.dump(json_info, f, indent=1, sort_keys=True)
 
         except Exception as e:
