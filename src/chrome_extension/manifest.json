@@ -1,0 +1,16 @@
+{
+	"manifest_version": 2,
+	"name": "Thing1",
+	"description": "Fetches current tab url.",
+	"version": "0.1",
+	"author": "Bruh",
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_title": "Just observing your current url."
+	},
+	"permissions": ["tabs", "activeTab", "<all_urls>", "chrome://favicon/*", "http://192.168.1.173:5000/*", "storage"],
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	}
+}

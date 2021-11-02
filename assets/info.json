@@ -2,9 +2,9 @@
  "apps": [
   {
    "hours": 0.0,
-   "minutes": 3.0,
+   "minutes": 4.0,
    "name": "pycharm64.exe",
-   "seconds": 230.549955368042,
+   "seconds": 275.508385181427,
    "url": "",
    "week": 0.0
   },
@@ -52,7 +52,7 @@
    "hours": 0.0,
    "minutes": 0.0,
    "name": "brave.exe",
-   "seconds": 3.6940627098083496,
+   "seconds": 8.084165573120117,
    "url": "",
    "week": 0.0
   },
@@ -175,6 +175,22 @@
    "seconds": 0,
    "url": "",
    "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "MusNotifyIcon.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "pythonw.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
   }
  ],
  "sites": [
@@ -196,9 +212,9 @@
   },
   {
    "hours": 0,
-   "minutes": 0,
+   "minutes": 3,
    "name": "chrome:",
-   "seconds": 20,
+   "seconds": 200,
    "url": "chrome://favicon/chrome://newtab/",
    "week": 0.0
   },
@@ -206,16 +222,16 @@
    "hours": 0,
    "minutes": 1,
    "name": "www.youtube.com",
-   "seconds": 89,
-   "url": "chrome://favicon/https://www.youtube.com/",
+   "seconds": 113,
+   "url": "chrome://favicon/https://www.youtube.com/watch?v=GjKm-KwnaOM",
    "week": 0.0
   },
   {
    "hours": 0,
-   "minutes": 1,
+   "minutes": 4,
    "name": "www.google.com",
-   "seconds": 103,
-   "url": "chrome://favicon/https://www.google.com/search?q=KeyError%3A+%3CPIL.ImageTk.PhotoImage+object+at+0x000001AE00010040%3E&oq=KeyError%3A+%3CPIL.ImageTk.PhotoImage+object+at+0x000001AE00010040%3E&aqs=chrome..69i57j69i58.138j0j1&sourceid=chrome&ie=UTF-8",
+   "seconds": 242,
+   "url": "chrome://favicon/https://www.google.com/search?q=python+dict+value&oq=python+dict+value&aqs=chrome..69i57j69i60l3.1903j0j1&sourceid=chrome&ie=UTF-8",
    "week": 0.0
   },
   {
@@ -230,8 +246,8 @@
    "hours": 0,
    "minutes": 0,
    "name": "stackoverflow.com",
-   "seconds": 24,
-   "url": "chrome://favicon/https://stackoverflow.com/questions/59516051/using-pil-imagetk-photoimage-results-in-error-photoimage-object-has-no-attrib",
+   "seconds": 38,
+   "url": "chrome://favicon/https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value",
    "week": 0.0
   },
   {
@@ -294,6 +310,70 @@
    "hours": 0,
    "minutes": 0,
    "name": "pypi.org",
+   "seconds": 0,
+   "url": "",
+   "week": 0
+  },
+  {
+   "hours": 0,
+   "minutes": 1,
+   "name": "www.reddit.com",
+   "seconds": 107,
+   "url": "chrome://favicon/https://www.reddit.com/r/GraphicsProgramming/comments/qgieo9/introductory_graphics_programming_content_that_is/",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "matplotlib.org",
+   "seconds": 2,
+   "url": "chrome://favicon/https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "github.com",
+   "seconds": 6,
+   "url": "chrome://favicon/https://github.com/pjgao",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "news.sanfordhealth.org",
+   "seconds": 0,
+   "url": "",
+   "week": 0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "note.nkmk.me",
+   "seconds": 0,
+   "url": "",
+   "week": 0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "www.w3schools.com",
+   "seconds": 0,
+   "url": "",
+   "week": 0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "quizdeveloper.com",
+   "seconds": 0,
+   "url": "",
+   "week": 0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "www.programiz.com",
    "seconds": 0,
    "url": "",
    "week": 0

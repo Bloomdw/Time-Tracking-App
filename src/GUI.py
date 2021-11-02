@@ -8,7 +8,12 @@ import time
 import threading
 import ctypes
 from Procs import Processes
-from Misc import get_icon, search_entry, search_vals, get_list, page_icon
+from Misc import get_icon, search_all_vals, search_vals, get_list, page_icon
+import matplotlib
+matplotlib.use("TkAgg")
+
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
+from matplotlib.figure import Figure
 
 class GUI_class:
     def __init__(self, width, height):
@@ -17,8 +22,8 @@ class GUI_class:
         self.width = width
         self.lb_font = tkFont.Font(family="Helvetica", size=10, weight="bold")
         self.process_list = []
-        self.a_process_list = []
-        self.a_page_list = []
+        self.a_process_list = {}
+        self.a_page_list = {}
         self.tab_list = []
         self.mon_procs = []
         self.mon_sites = []
@@ -28,6 +33,10 @@ class GUI_class:
         self.create_buttons()
         self.create_listboxes()
         self.welcome_screen()
+        self.total_site_time = 0
+        self.total_app_time = 0
+        self.top_apps = {}
+        self.top_sites = {}
 
     def mainloop(self):
         self.gridroot.mainloop()
@@ -44,7 +53,6 @@ class GUI_class:
     def del_selections_2(self):
         cur = self.Lb2.curselection()
         if not cur:
-            print("lol1")
             return
 
         for s in cur:
@@ -56,7 +64,6 @@ class GUI_class:
     def del_selections_sites2(self):
         cur = self.Lb4.curselection()
         if not cur:
-            print("lol3")
             return
 
         for s in cur:
@@ -65,7 +72,6 @@ class GUI_class:
     def rem_monitor_sels(self):
         cur = self.Lb2.curselection()
         if not cur:
-            print("lol4")
             return
 
         for s in cur:
@@ -77,7 +83,6 @@ class GUI_class:
     def rem_monitor_sels_sites(self):
         cur = self.Lb4.curselection()
         if not cur:
-            print("lo5")
             return
 
         for s in cur:
@@ -105,7 +110,7 @@ class GUI_class:
 
     def welcome_screen(self):
         self.gridroot.geometry(str(self.width + 'x' + self.height))
-        self.time_text = Text(self.gridroot, font=self.lb_font, height=1, padx=5, pady=5, width=7)
+        self.time_text = Text(self.gridroot, font=self.lb_font, height=5, padx=5, pady=5, width=20, bd=1, relief='sunken')
         self.watchlist_btn.grid(column=0, row=0)
         self.main_title.grid(column=0, row=1)
         self.time_text.grid(column=2, row=6)
@@ -149,25 +154,62 @@ class GUI_class:
         self.time_text.insert(INSERT, "--")
 
     def display_time_info(self):
-        self.time_text.delete('1.0', END)
-        cur = self.Lb2.curselection()
-        name = self.Lb2.get(cur)
-        vals = search_vals(name, "apps")
-        self.time_text.insert(INSERT, vals[0])
-        self.time_text.insert(INSERT, vals[1])
-        self.time_text.insert(INSERT, vals[2])
-        self.time_text.insert(INSERT, vals[3])
+        try:
+            self.time_text.delete('1.0', END)
+            cur = self.Lb2.curselection()
+            name = self.Lb2.get(cur)
+            vals = search_vals(name, "apps")
+            self.time_text.insert(INSERT, str("Seconds:" + str(vals[0]) + '\n'))
+            self.time_text.insert(INSERT, str("Minutes:" + str(vals[1]) + '\n'))
+            self.time_text.insert(INSERT, str("Hours:" + str(vals[2]) + '\n'))
+            self.time_text.insert(INSERT, str("Weeks:" + str(vals[3]) + '\n'))
+            self.create_graphics(name, "apps")
+        except:
+            print("You must add your selection to the watchlist first!")
 
     def display_site_time(self):
-        self.time_text.delete('1.0', END)
-        cur = self.Lb4.curselection()
-        name = self.Lb4.get(cur)
-        vals = search_vals(name, "sites")
-        self.time_text.insert(INSERT, vals[0])
-        self.time_text.insert(INSERT, vals[1])
-        self.time_text.insert(INSERT, vals[2])
-        self.time_text.insert(INSERT, vals[3])
-        return name
+        try:
+            self.time_text.delete('1.0', END)
+            cur = self.Lb4.curselection()
+            name = self.Lb4.get(cur)
+            vals = search_vals(name, "sites")
+            self.time_text.insert(INSERT, str("Seconds:" + str(vals[0]) + '\n'))
+            self.time_text.insert(INSERT, str("Minutes:" + str(vals[1]) + '\n'))
+            self.time_text.insert(INSERT, str("Hours:" + str(vals[2]) + '\n'))
+            self.time_text.insert(INSERT, str("Weeks:" + str(vals[3]) + '\n'))
+            self.create_graphics(name, "sites")
+        except:
+            print("You must add your selection to the watchlist first!")
+
+    def create_graphics(self, name, Type):
+        f = Figure(figsize=(5,5), dpi=100)
+        a = f.add_subplot(111)
+
+        sizes = []
+        labels = []
+
+        if Type == "sites":
+            cur = self.a_page_list[name]
+            items = self.top_sites.items()
+            sizes = [cur, self.total_site_time - cur, list(items)[0][1], list(items)[1][1],
+                     list(items)[2][1], list(items)[3][1], list(items)[4][1]]
+            labels = name, "All other apps", list(items)[0][0], list(items)[1][0], \
+                     list(items)[2][0], list(items)[3][0], list(items)[4][0]
+        else:
+            cur = self.a_process_list[name]
+            items = self.top_apps.items()
+            sizes = [cur, self.total_app_time - cur, list(items)[0][1], list(items)[1][1],
+                     list(items)[2][1], list(items)[3][1], list(items)[4][1]]
+            labels = name, "All other apps", list(items)[0][0], list(items)[1][0], \
+                     list(items)[2][0], list(items)[3][0], list(items)[4][0]
+
+        explode = (0.2, 0, 0, 0, 0, 0, 0)
+        a.pie(sizes, explode=explode, labels=labels,
+              shadow=True)
+
+        canvas = FigureCanvasTkAgg(f, master=self.gridroot)
+        canvas.draw()
+        canvas.get_tk_widget().grid(row=4, column=1)
 
     def add_process(self, idx, name, pid, exe, didx):
         i = get_icon(exe)
@@ -179,9 +221,14 @@ class GUI_class:
         self.icons.append(im)
         self.icon_tree.insert(parent='', index='end', image=im, values=(str(name)))
 
-        self.a_process_list.append(name)
+        self.process_list.append(name)
         process = self.create_process(name, pid, exe)
-        self.process_list.append(process)
+
+        num = search_vals(name, "apps")
+        num = num[0] + num[1] + num[2] + num[3]
+
+        self.a_process_list[name] = num
+        self.calc_top_times("apps")
         return 1
 
     def create_process(self, info, pid, exe):
@@ -199,7 +246,7 @@ class GUI_class:
             with po.oneshot():
                 parent = po.parent()
 
-            if name in self.a_process_list:
+            if name in self.process_list:
                 continue
 
             # adds process only if the name is not duplicated and that it's not a windows process
@@ -214,16 +261,37 @@ class GUI_class:
 
     def update_page_listbox(self):
         for idx, page in enumerate(get_list("sites")):
-            if str(page[0]) in self.a_page_list:
+            if str(page[0]) in self.a_page_list.values():
                 continue
 
             name = str(page[0])
             imdata = str(page[1])
+            num = search_vals(name, "sites")
+            num = num[0] + num[1] + num[2] + num[3]
 
-            img = ImageTk.PhotoImage(page_icon(imdata))
+            page_icon(imdata)
+            img = Image.open('../assets/picon.png')
+            img = ImageTk.PhotoImage(img)
 
             self.icon_tree2.insert(parent='', index='end', image=img, values=(str(name)))
-            self.a_page_list.append(name)
+            self.a_page_list[name] = num
+            self.total_site_time += num
+            self.calc_top_times("sites")
+
+    def calc_top_times(self, Type):
+        all = {}
+        for num in search_all_vals(Type):
+            val = num[0] + num[1] + num[2] + num[3]
+            name = num[4]
+            all[name] = val
+
+        a = dict(sorted(all.items(), key=lambda item: item[1]))
+
+        if Type == "sites":
+            self.top_sites = a
+        else:
+            self.top_apps = a
+
 
     def create_buttons(self):
         self.create_canvas()
@@ -248,7 +316,7 @@ class GUI_class:
         self.refresh_list_btn = tk.Button(self.gridroot, text='Refresh program list', bg='#3E3432', fg='#FB6F14',
                                      command=lambda: [threading.Thread(target=self.update_proc_listbox())])
 
-        self.refresh__page_list_btn = tk.Button(self.gridroot, text='Refresh webpage list', bg='#3E3432', fg='#FB6F14',
+        self.refresh_page_list_btn = tk.Button(self.gridroot, text='Refresh webpage list', bg='#3E3432', fg='#FB6F14',
                                            command=lambda: [self.update_page_listbox()])
 
         self.switch_apps_btn = tk.Button(self.gridroot, text='Switch to apps page', bg='#3E3432', fg='#FB6F14',
@@ -279,14 +347,13 @@ class GUI_class:
         self.icon_tree.heading('B', text="bruh2", anchor='center')
         self.icon_tree.bind('<<TreeviewSelect>>', self.select_tree_item)
 
-        cols2 = ['A', 'B']
-        self.icon_tree2 = ttk.Treeview(self.gridroot, style="MyStyle2.Treeview", columns=cols2, padding=(5, 5),
+        cols2 = ['C', 'D']
+        self.icon_tree2 = ttk.Treeview(self.gridroot, style="MyStyle.Treeview", columns=cols2, padding=(5, 5),
                                        selectmode='browse', height=15, show='tree')
-        ttk.Style().configure("MyStyle2.Treeview", rowheight=36)
-        self.icon_tree2.column('A', anchor='center', minwidth=50)
-        self.icon_tree2.heading('A', text="bruh", anchor='center')
-        self.icon_tree2.column('B', anchor='center', minwidth=15)
-        self.icon_tree2.heading('B', text="bruh2", anchor='center')
+        self.icon_tree2.column('C', anchor='center', minwidth=50)
+        self.icon_tree2.heading('C', text="bruh", anchor='center')
+        self.icon_tree2.column('D', anchor='center', minwidth=15)
+        self.icon_tree2.heading('D', text="bruh2", anchor='center')
         self.icon_tree2.bind('<<TreeviewSelect>>', self.select_tree_item2)
 
     def monitor_sites_screen(self):
@@ -295,13 +362,14 @@ class GUI_class:
             item.grid_forget()
 
         self.icon_tree2.grid(column=0, row=2)
-        self.Lb4.grid(column=2, row=2)
+        self.Lb4.grid(column=1, row=2)
         self.Lb4.config(font=self.lb_font, selectmode=SINGLE, height=len(self.a_page_list))
-        self.switch_apps_btn.grid(column=2, row=5)
-        self.update_time_graphics_sites.grid(column=1, row=6)
-        self.time_text.grid(column=1, row=7)
-        self.add_monitor_site_btn.grid(column=1, row=3)
-        self.rm_from_site_list_btn.grid(column=2, row=4)
+        self.switch_apps_btn.grid(column=1, row=5)
+        self.update_time_graphics_sites.grid(column=0, row=6)
+        self.time_text.grid(column=0, row=7)
+        self.add_monitor_site_btn.grid(column=0, row=3)
+        self.rm_from_site_list_btn.grid(column=1, row=4)
+        self.refresh_page_list_btn.grid(column=1, row=6)
 
         self.update_page_listbox()
 

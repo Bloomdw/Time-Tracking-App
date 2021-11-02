@@ -5,6 +5,7 @@ import re
 import json
 from Misc import url_strip, search_thing, search_entry, search_vals
 import datetime
+import traceback
 
 url_timestamp = {}
 url_viewtime = {}
@@ -27,8 +28,8 @@ def send_url():
     global url_viewtime
     global prev_url
 
-    print(url)
-    print(ic)
+    #print(url)
+    #print(ic)
 
     if parent_url not in url_timestamp.keys():
         url_viewtime[parent_url] = 0
@@ -51,16 +52,16 @@ def send_url():
     js_list = []
 
     try:
-        with open("info.json", 'r') as f:
+        with open("../assets/info.json", 'r') as f:
             info = json.load(f)
             json_info = info
             json_info = search_entry(info, 'sites', url, time_spent, ic)
-            print(json_info)
+            #print(json_info)
     except Exception as e:
         traceback.print_exc()
         return jsonify({'message': 'nope nope!'}), 200
 
-    with open("info.json", 'w') as f:
+    with open("../assets/info.json", 'w') as f:
         json.dump(json_info, f, indent=1)
 
     return jsonify({'message': 'success!'}), 200

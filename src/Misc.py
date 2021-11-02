@@ -37,6 +37,28 @@ def search_vals(name, Type):
 
     return nums
 
+def search_all_vals(Type):
+    nums = []
+
+    try:
+        with open("../assets/info.json", 'r') as d:
+            j_obj = json.load(d)
+
+            if Type not in j_obj:
+                j_obj[Type] = []
+
+            for idx, obj in enumerate(j_obj[Type]):
+                ns = [obj['seconds'], obj['minutes'], obj['hours'], obj['week'],
+                        obj['name']]
+                nums.append(ns)
+
+    except Exception as e:
+        print(e)
+        traceback.print_exc()
+
+    print(nums)
+    return nums
+
 #Updates all json info
 def search_entry(info, Type, name, secs, url):
     j_obj = info
@@ -109,9 +131,10 @@ def get_icon(exe):
 
 def page_icon(data):
     defic = Image.open("../assets/deficon.png")
+    defic = defic.resize((36, 36))
     url = data
     if data == '' or not data or data is None:
-        return defic
+        defic.save('../assets/picon.png')
 
     try:
         thing = url.partition("chrome://favicon/")[2]
@@ -119,11 +142,11 @@ def page_icon(data):
         ic = requests.get(icon[0].url)
         im = Image.open(BytesIO(ic.content))
         im = im.resize((36, 36))
-        return im
+        im.save('../assets/picon.png')
     except Exception as e:
         #print(e)
         #traceback.print_exc()
-        return defic
+        defic.save('../assets/picon.png')
 
 def url_strip(url):
     if "http://" in url or "https://" in url:
