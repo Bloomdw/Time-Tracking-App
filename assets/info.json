@@ -219,12 +219,12 @@
    "week": 0.0
   },
   {
-   "hours": 0,
-   "minutes": 3,
    "name": "chrome:",
-   "seconds": 200,
-   "url": "chrome://favicon/chrome://newtab/",
-   "week": 0.0
+   "seconds": 311,
+   "minutes": 5,
+   "hours": 0,
+   "week": 0.0,
+   "url": "chrome://favicon/chrome://newtab/"
   },
   {
    "hours": 0,
@@ -235,12 +235,12 @@
    "week": 0.0
   },
   {
-   "hours": 0,
-   "minutes": 4,
    "name": "www.google.com",
-   "seconds": 242,
-   "url": "chrome://favicon/https://www.google.com/search?q=python+dict+value&oq=python+dict+value&aqs=chrome..69i57j69i60l3.1903j0j1&sourceid=chrome&ie=UTF-8",
-   "week": 0.0
+   "seconds": 260,
+   "minutes": 4,
+   "hours": 0,
+   "week": 0.0,
+   "url": "chrome://favicon/https://www.google.com/search?q=app+time+tracking+app&sxsrf=AOaemvLGWxGHc-FzyuAryfPiQQ_r8GcT_A%3A1637175399135&ei=Z1CVYeSlB4-SwbkPqOSK6A8&oq=app+time+tracking+app&gs_lcp=Cgdnd3Mtd2l6EAMyBggAEAgQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjIGCAAQCBAeMgYIABAIEB4yBQgAEIYDMgUIABCGAzIFCAAQhgMyBQgAEIYDOgcIIxCwAxAnOgcIABBHELADOhAILhDHARDRAxDIAxCwAxBDSgUIOBIBMUoECEEYAFC5CVjhC2DrDGgBcAJ4AIABgAGIAdwDkgEDMC40mAEAoAEByAENwAEB&sclient=gws-wiz&ved=0ahUKEwik9eXQiaD0AhUPSTABHSiyAv0Q4dUDCA4&uact=5"
   },
   {
    "hours": 0,
@@ -385,6 +385,22 @@
    "seconds": 0,
    "url": "",
    "week": 0
+  },
+  {
+   "name": "zapier.com",
+   "seconds": 0,
+   "minutes": 0,
+   "hours": 0,
+   "week": 0,
+   "url": ""
+  },
+  {
+   "name": "clockify.me",
+   "seconds": 0,
+   "minutes": 0,
+   "hours": 0,
+   "week": 0,
+   "url": ""
   }
  ]
 }
