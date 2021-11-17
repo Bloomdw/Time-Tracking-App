@@ -191,6 +191,14 @@
    "seconds": 0,
    "url": "",
    "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "osu!.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
   }
  ],
  "sites": [
@@ -223,7 +231,7 @@
    "minutes": 1,
    "name": "www.youtube.com",
    "seconds": 113,
-   "url": "chrome://favicon/https://www.youtube.com/watch?v=GjKm-KwnaOM",
+   "url": "chrome://favicon/https://www.youtube.com/watch?v=IOwU324V9oo",
    "week": 0.0
   },
   {

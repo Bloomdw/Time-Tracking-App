@@ -10,6 +10,8 @@ import ctypes
 from Procs import Processes
 from Misc import get_icon, search_all_vals, search_vals, get_list, page_icon
 import matplotlib
+import matplotlib.pyplot as plt
+from itertools import islice
 matplotlib.use("TkAgg")
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
@@ -189,27 +191,35 @@ class GUI_class:
         labels = []
 
         if Type == "sites":
-            cur = self.a_page_list[name]
-            items = self.top_sites.items()
-            sizes = [cur, self.total_site_time - cur, list(items)[0][1], list(items)[1][1],
-                     list(items)[2][1], list(items)[3][1], list(items)[4][1]]
-            labels = name, "All other apps", list(items)[0][0], list(items)[1][0], \
-                     list(items)[2][0], list(items)[3][0], list(items)[4][0]
-        else:
-            cur = self.a_process_list[name]
-            items = self.top_apps.items()
-            sizes = [cur, self.total_app_time - cur, list(items)[0][1], list(items)[1][1],
-                     list(items)[2][1], list(items)[3][1], list(items)[4][1]]
-            labels = name, "All other apps", list(items)[0][0], list(items)[1][0], \
-                     list(items)[2][0], list(items)[3][0], list(items)[4][0]
+            labels = self.top_sites.keys()
 
-        explode = (0.2, 0, 0, 0, 0, 0, 0)
+            for a in islice(4, self.top_sites):
+                if a is not name:
+                    sizes.append(self.top_sites[a])
+
+            cur = self.top_sites[name]
+            sizes.append(cur)
+            print(sizes)
+            print(labels)
+        else:
+            labels = self.top_apps.keys()
+
+            for a in islice(4, self.top_apps):
+                if a is not name:
+                    sizes.append(self.top_apps[a])
+
+            cur = self.top_apps[name]
+            sizes.append(cur)
+
+        explode = (0, 0, 0, 0, 0.2)
         a.pie(sizes, explode=explode, labels=labels,
               shadow=True)
 
-        canvas = FigureCanvasTkAgg(f, master=self.gridroot)
-        canvas.draw()
-        canvas.get_tk_widget().grid(row=4, column=1)
+        plt.pie(sizes, labels=labels, explode=explode, shadow=True)
+        plt.show()
+        #canvas = FigureCanvasTkAgg(f, master=self.gridroot)
+        #canvas.draw()
+        #canvas.get_tk_widget().grid(row=4, column=1)
 
     def add_process(self, idx, name, pid, exe, didx):
         i = get_icon(exe)
