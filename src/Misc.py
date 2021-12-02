@@ -56,7 +56,6 @@ def search_all_vals(Type):
         print(e)
         traceback.print_exc()
 
-    print(nums)
     return nums
 
 #Updates all json info

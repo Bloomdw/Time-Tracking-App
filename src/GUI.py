@@ -191,35 +191,36 @@ class GUI_class:
         labels = []
 
         if Type == "sites":
-            labels = self.top_sites.keys()
+            dlist = self.top_sites
 
-            for a in islice(4, self.top_sites):
-                if a is not name:
-                    sizes.append(self.top_sites[a])
+            for k, v in islice(dlist.items(), 4):
+                labels.append(k)
+                sizes.append(v)
 
             cur = self.top_sites[name]
             sizes.append(cur)
-            print(sizes)
-            print(labels)
-        else:
-            labels = self.top_apps.keys()
+            labels.append(name)
 
-            for a in islice(4, self.top_apps):
-                if a is not name:
-                    sizes.append(self.top_apps[a])
+        else:
+            dlist = self.top_apps
+            print(dlist)
+
+            for k, v in islice(dlist.items(), 4):
+                labels.append(k)
+                sizes.append(v)
 
             cur = self.top_apps[name]
             sizes.append(cur)
+            labels.append(name)
 
+        print(sizes)
+        print(labels)
         explode = (0, 0, 0, 0, 0.2)
-        a.pie(sizes, explode=explode, labels=labels,
+        a.pie(sizes, radius=1, explode=explode, labels=labels,
               shadow=True)
 
-        plt.pie(sizes, labels=labels, explode=explode, shadow=True)
-        plt.show()
-        #canvas = FigureCanvasTkAgg(f, master=self.gridroot)
-        #canvas.draw()
-        #canvas.get_tk_widget().grid(row=4, column=1)
+        canvas = FigureCanvasTkAgg(f, master=self.gridroot)
+        canvas.get_tk_widget().grid(row=4, column=1)
 
     def add_process(self, idx, name, pid, exe, didx):
         i = get_icon(exe)
@@ -295,12 +296,14 @@ class GUI_class:
             name = num[4]
             all[name] = val
 
-        a = dict(sorted(all.items(), key=lambda item: item[1]))
+        a = dict(sorted(all.items(), key=lambda item: item[1], reverse=True))
 
         if Type == "sites":
             self.top_sites = a
+            print(self.top_sites)
         else:
             self.top_apps = a
+            print(self.top_apps)
 
 
     def create_buttons(self):

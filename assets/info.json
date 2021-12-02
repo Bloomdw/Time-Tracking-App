@@ -2,9 +2,9 @@
  "apps": [
   {
    "hours": 0.0,
-   "minutes": 4.0,
+   "minutes": 6.0,
    "name": "pycharm64.exe",
-   "seconds": 275.508385181427,
+   "seconds": 365.6216766834259,
    "url": "",
    "week": 0.0
   },
@@ -199,6 +199,14 @@
    "seconds": 0,
    "url": "",
    "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 0,
+   "name": "powershell.exe",
+   "seconds": 0,
+   "url": "",
+   "week": 0.0
   }
  ],
  "sites": [
@@ -219,28 +227,28 @@
    "week": 0.0
   },
   {
+   "hours": 0,
+   "minutes": 5,
    "name": "chrome:",
    "seconds": 311,
-   "minutes": 5,
-   "hours": 0,
-   "week": 0.0,
-   "url": "chrome://favicon/chrome://newtab/"
-  },
-  {
-   "hours": 0,
-   "minutes": 1,
-   "name": "www.youtube.com",
-   "seconds": 113,
-   "url": "chrome://favicon/https://www.youtube.com/watch?v=IOwU324V9oo",
+   "url": "chrome://favicon/chrome://newtab/",
    "week": 0.0
   },
   {
+   "hours": 0,
+   "minutes": 2,
+   "name": "www.youtube.com",
+   "seconds": 150,
+   "url": "chrome://favicon/https://www.youtube.com/watch?v=4THJJfybn_Y",
+   "week": 0.0
+  },
+  {
+   "hours": 0,
+   "minutes": 4,
    "name": "www.google.com",
    "seconds": 260,
-   "minutes": 4,
-   "hours": 0,
-   "week": 0.0,
-   "url": "chrome://favicon/https://www.google.com/search?q=app+time+tracking+app&sxsrf=AOaemvLGWxGHc-FzyuAryfPiQQ_r8GcT_A%3A1637175399135&ei=Z1CVYeSlB4-SwbkPqOSK6A8&oq=app+time+tracking+app&gs_lcp=Cgdnd3Mtd2l6EAMyBggAEAgQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjIGCAAQCBAeMgYIABAIEB4yBQgAEIYDMgUIABCGAzIFCAAQhgMyBQgAEIYDOgcIIxCwAxAnOgcIABBHELADOhAILhDHARDRAxDIAxCwAxBDSgUIOBIBMUoECEEYAFC5CVjhC2DrDGgBcAJ4AIABgAGIAdwDkgEDMC40mAEAoAEByAENwAEB&sclient=gws-wiz&ved=0ahUKEwik9eXQiaD0AhUPSTABHSiyAv0Q4dUDCA4&uact=5"
+   "url": "chrome://favicon/https://www.google.com/search?q=app+time+tracking+app&sxsrf=AOaemvLGWxGHc-FzyuAryfPiQQ_r8GcT_A%3A1637175399135&ei=Z1CVYeSlB4-SwbkPqOSK6A8&oq=app+time+tracking+app&gs_lcp=Cgdnd3Mtd2l6EAMyBggAEAgQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjIGCAAQCBAeMgYIABAIEB4yBQgAEIYDMgUIABCGAzIFCAAQhgMyBQgAEIYDOgcIIxCwAxAnOgcIABBHELADOhAILhDHARDRAxDIAxCwAxBDSgUIOBIBMUoECEEYAFC5CVjhC2DrDGgBcAJ4AIABgAGIAdwDkgEDMC40mAEAoAEByAENwAEB&sclient=gws-wiz&ved=0ahUKEwik9eXQiaD0AhUPSTABHSiyAv0Q4dUDCA4&uact=5",
+   "week": 0.0
   },
   {
    "hours": 0,
@@ -387,20 +395,20 @@
    "week": 0
   },
   {
+   "hours": 0,
+   "minutes": 0,
    "name": "zapier.com",
    "seconds": 0,
-   "minutes": 0,
-   "hours": 0,
-   "week": 0,
-   "url": ""
+   "url": "",
+   "week": 0
   },
   {
+   "hours": 0,
+   "minutes": 0,
    "name": "clockify.me",
    "seconds": 0,
-   "minutes": 0,
-   "hours": 0,
-   "week": 0,
-   "url": ""
+   "url": "",
+   "week": 0
   }
  ]
 }
