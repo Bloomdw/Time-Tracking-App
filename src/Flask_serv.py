@@ -69,7 +69,7 @@ def send_url():
 @app.route('/quit_url', methods=['POST'])
 def quit_url():
     resp_json = request.get_data()
-    print("Url closed: " + resp_json.decode())
+    #print("Url closed: " + resp_json.decode())
     return jsonify({'message': 'quit success!'}), 200
 
 def start_flask():

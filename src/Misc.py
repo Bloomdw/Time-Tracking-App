@@ -1,10 +1,3 @@
-import ctypes
-from ctypes import wintypes
-import win32
-import win32ui
-import win32gui
-import win32con
-import win32api
 import json
 import re
 import traceback
@@ -12,6 +5,8 @@ from PIL import Image, ImageTk, ImageChops
 import favicon
 import requests
 from io import BytesIO
+import subprocess
+import urllib.request
 
 #Returns number values to be displayed on the GUI
 def search_vals(name, Type):
@@ -89,12 +84,15 @@ def search_entry(info, Type, name, secs, url):
         'minutes': 0,
         'hours': 0,
         'week': 0,
-        'url': ""
+        'url': url
     })
 
     return j_obj
 
-def get_icon(exe):
+# Old method. Unfortunately (or fortunately) broke after Win11 release, prob due to some change in Win API.
+# Other method turns out to be faster
+"""
+def get_icon_bak(exe):
     ico_x = win32api.GetSystemMetrics(win32con.SM_CXICON)
     ico_y = win32api.GetSystemMetrics(win32con.SM_CYICON)
 
@@ -103,7 +101,7 @@ def get_icon(exe):
 
     hdc = win32ui.CreateDCFromHandle(win32gui.GetDC(0))
     hbmp = win32ui.CreateBitmap()
-    hbmp.CreateCompatibleBitmap(hdc, ico_x, ico_y)
+    hbmp.CreateCompatibleBitmap(hdc, ico_x, ico_x)
     hdc = hdc.CreateCompatibleDC()
 
     hdc.SelectObject(hbmp)
@@ -127,25 +125,36 @@ def get_icon(exe):
     img = Image.open("../assets/icon.png")
 
     return img
+"""
+
+def get_icon(exe):
+    p = subprocess.run(['icoextract', exe, '../assets/icon.png'], shell=True)
+    print(p.returncode)
+    img = Image.open("../assets/icon.png")
+    resized_img = img.resize((36, 36))
+    return resized_img
 
 def page_icon(data):
+    print("data:" + data)
     defic = Image.open("../assets/deficon.png")
     defic = defic.resize((36, 36))
-    url = data
     if data == '' or not data or data is None:
-        defic.save('../assets/picon.png')
+        return defic
 
     try:
-        thing = url.partition("chrome://favicon/")[2]
-        icon = favicon.get(thing)
-        ic = requests.get(icon[0].url)
-        im = Image.open(BytesIO(ic.content))
+        url = data.partition("chrome://favicon/")[2]
+        nurl = site_getter(url)
+        urllib.request.urlretrieve(
+            nurl,
+            "../assets/picon.png")
+        im = Image.open("../assets/picon.png")
         im = im.resize((36, 36))
         im.save('../assets/picon.png')
+        return im
     except Exception as e:
-        #print(e)
-        #traceback.print_exc()
-        defic.save('../assets/picon.png')
+        print(e)
+        traceback.print_exc()
+        return defic
 
 def url_strip(url):
     if "http://" in url or "https://" in url:
@@ -155,6 +164,16 @@ def url_strip(url):
         url = url.split('/', 1)[0]
 
     return url
+
+def site_getter(url):
+    list = url.split("/")
+    del list[3:]
+    print(list)
+    nurl = "/".join(list)
+    print(nurl)
+    nnurl = "%s/%s" % (nurl, "favicon.ico")
+    print(nnurl)
+    return nnurl
 
 def search_thing(r):
     rpl = str(r[0])

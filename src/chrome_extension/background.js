@@ -68,7 +68,7 @@ function sendRequest(tab){
     formD.append("url", url);
     formD.append("ic_link", favicon);
     
-    xhttp.open("POST", "http://192.168.1.173:5000/send_url");
+    xhttp.open("POST", "http://192.168.1.181:5000/send_url");
     xhttp.send(formD);
 }
 

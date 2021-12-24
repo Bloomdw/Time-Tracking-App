@@ -2,9 +2,8 @@ from tkinter import *
 import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.ttk as ttk
-from PIL import Image, ImageTk, ImageChops
+from PIL import Image, ImageTk
 import psutil
-import time
 import threading
 import ctypes
 from Procs import Processes
@@ -13,6 +12,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from itertools import islice
 matplotlib.use("TkAgg")
+import os
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 from matplotlib.figure import Figure
@@ -79,7 +79,7 @@ class GUI_class:
         for s in cur:
             name = self.Lb2.get(s)
             for i in enumerate(self.process_list[:]):
-                if name == i.name:
+                if name == i:
                     self.process_list.remove(i)
 
     def rem_monitor_sels_sites(self):
@@ -103,7 +103,7 @@ class GUI_class:
         return _list
 
     def create_canvas(self):
-        img = Image.open('../assets/bg.jpg')
+        img = Image.open('../assets/bg.png')
         img.resize((1300, 1000))
         background_image = ImageTk.PhotoImage(img)
         background_label = tk.Label(self.gridroot, image=background_image)
@@ -216,11 +216,10 @@ class GUI_class:
         print(sizes)
         print(labels)
         explode = (0, 0, 0, 0, 0.2)
-        a.pie(sizes, radius=1, explode=explode, labels=labels,
-              shadow=True)
+        a.pie(sizes, radius=1, explode=explode, labels=labels, startangle=90, autopct='%1.1f%%', shadow=True)
 
         canvas = FigureCanvasTkAgg(f, master=self.gridroot)
-        canvas.get_tk_widget().grid(row=4, column=1)
+        canvas.get_tk_widget().grid(row=7, column=2)
 
     def add_process(self, idx, name, pid, exe, didx):
         i = get_icon(exe)
@@ -236,9 +235,9 @@ class GUI_class:
         process = self.create_process(name, pid, exe)
 
         num = search_vals(name, "apps")
-        num = num[0] + num[1] + num[2] + num[3]
+        total = num[0] + num[1] + num[2] + int(num[3])
 
-        self.a_process_list[name] = num
+        self.a_process_list[name] = total
         self.calc_top_times("apps")
         return 1
 
@@ -280,8 +279,7 @@ class GUI_class:
             num = search_vals(name, "sites")
             num = num[0] + num[1] + num[2] + num[3]
 
-            page_icon(imdata)
-            img = Image.open('../assets/picon.png')
+            img = page_icon(imdata)
             img = ImageTk.PhotoImage(img)
 
             self.icon_tree2.insert(parent='', index='end', image=img, values=(str(name)))
@@ -300,10 +298,10 @@ class GUI_class:
 
         if Type == "sites":
             self.top_sites = a
-            print(self.top_sites)
+            #print(self.top_sites)
         else:
             self.top_apps = a
-            print(self.top_apps)
+            #print(self.top_apps)
 
 
     def create_buttons(self):
@@ -392,7 +390,7 @@ class GUI_class:
             item.grid_forget()
 
         self.Lb2.grid(column=2, row=2)
-        self.Lb2.config(font=self.lb_font, selectmode=MULTIPLE, height=len(self.process_list))
+        self.Lb2.config(font=self.lb_font, selectmode=SINGLE, height=len(self.process_list))
         self.icon_tree.grid(column=0, row=2)
         self.rm_from_list_btn.grid(column=2, row=3)
         self.refresh_list_btn.grid(column=1, row=4)
